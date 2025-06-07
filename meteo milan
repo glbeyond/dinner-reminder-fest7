@@ -1,0 +1,44 @@
+import requests
+from datetime import datetime, timedelta
+
+# 企业微信机器人Webhook地址
+WEBHOOK_URL = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8d6cb27e-3626-4db7-b64e-a44ecffdb01d"
+
+# 和风天气API
+API_KEY = "6f48ed23c81d4428ae3c4ec7665f715a"
+API_HOST = "mh564tpu4m.re.qweatherapi.com"
+LOCATION = "ITXX0042"  # 米兰
+
+def get_tomorrow_weather():
+    url = f"https://{API_HOST}/v7/weather/3d?location={LOCATION}&key={API_KEY}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        tomorrow = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
+        for day in data['daily']:
+            if day['fxDate'] == tomorrow:
+                text = (
+                    f"【米兰明日天气预报】\n"
+                    f"日期：{tomorrow}\n"
+                    f"白天：{day['textDay']}\n"
+                    f"夜晚：{day['textNight']}\n"
+                    f"最高温：{day['tempMax']}℃\n"
+                    f"最低温：{day['tempMin']}℃\n"
+                    f"风力：{day['windScaleDay']}级\n"
+                )
+                return text
+    return "获取天气数据失败，请稍后再试。"
+
+def send_message(content):
+    data = {
+        "msgtype": "text",
+        "text": {
+            "content": content
+        }
+    }
+    response = requests.post(WEBHOOK_URL, json=data)
+    print(response.text)
+
+if __name__ == "__main__":
+    content = get_tomorrow_weather()
+    send_message(content)
