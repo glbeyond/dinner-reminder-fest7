@@ -1,4 +1,4 @@
-name: meteo milan
+name: Milan Weather Reminder
 
 on:
   schedule:
