@@ -2,7 +2,7 @@ name: meteo
 
 on:
   schedule:
-    - cron: '0 11 * * *'  # 每天UTC时间11点，北京时间19点
+    - cron: '0 19 * * *'  # 每天UTC时间11点，北京时间19点
   workflow_dispatch:  # 允许手动触发
 
 jobs:
@@ -23,4 +23,4 @@ jobs:
 
     - name: Run script
       run: |
-        python meteo milan
+        python meteo.py
