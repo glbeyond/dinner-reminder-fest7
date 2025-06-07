@@ -1,0 +1,17 @@
+import requests
+
+WEBHOOK_URL = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8d6cb27e-3626-4db7-b64e-a44ecffdb01d"
+
+def send_message():
+    data = {
+        "msgtype": "text",
+        "text": {
+            "content": "@Tino ，请确认今天UPS的预约板夹数",
+            "mentioned_list": ["GongLei"]
+        }
+    }
+    response = requests.post(WEBHOOK_URL, json=data)
+    print(response.text)
+
+if __name__ == "__main__":
+    send_message()
