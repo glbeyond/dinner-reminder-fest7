@@ -23,4 +23,4 @@ jobs:
 
     - name: Run script
       run: |
-        python meteo.py
+        python meteo
