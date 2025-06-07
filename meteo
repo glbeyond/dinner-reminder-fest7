@@ -11,11 +11,14 @@ LOCATION = "ITXX0042"  # 米兰
 
 def get_tomorrow_weather():
     url = f"https://{API_HOST}/v7/weather/3d?location={LOCATION}&key={API_KEY}"
+    print("调试URL:", url)  # 在GitHub Actions日志里打印
     response = requests.get(url)
+    print("API响应:", response.text)  # 打印API返回的内容
+
     if response.status_code == 200:
         data = response.json()
         tomorrow = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
-        for day in data['daily']:
+        for day in data.get('daily', []):
             if day['fxDate'] == tomorrow:
                 text = (
                     f"【米兰明日天气预报】\n"
@@ -37,7 +40,7 @@ def send_message(content):
         }
     }
     response = requests.post(WEBHOOK_URL, json=data)
-    print(response.text)
+    print("发送消息响应:", response.text)
 
 if __name__ == "__main__":
     content = get_tomorrow_weather()
