@@ -7,7 +7,7 @@ WEBHOOK_URL = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8d6cb27e-362
 # 和风天气API
 API_KEY = "6f48ed23c81d4428ae3c4ec7665f715a"
 API_HOST = "mh564tpu4m.re.qweatherapi.com"
-LOCATION = "ITXX0042"  # 米兰
+LOCATION = "101010100"  # 北京
 
 def get_tomorrow_weather():
     url = f"https://{API_HOST}/v7/weather/3d?location={LOCATION}&key={API_KEY}"
@@ -21,7 +21,7 @@ def get_tomorrow_weather():
         for day in data.get('daily', []):
             if day['fxDate'] == tomorrow:
                 text = (
-                    f"【米兰明日天气预报】\n"
+                    f"【北京明日天气预报】\n"
                     f"日期：{tomorrow}\n"
                     f"白天：{day['textDay']}\n"
                     f"夜晚：{day['textNight']}\n"
