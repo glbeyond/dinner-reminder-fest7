@@ -1,4 +1,4 @@
-name:meteo
+name: meteo
 
 on:
   schedule:
