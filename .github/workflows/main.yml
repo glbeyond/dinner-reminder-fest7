@@ -2,7 +2,7 @@ name: dinner-reminder-fest7
 
 on:
   schedule:
-    - cron: '30 19 * * *'  # 每天12点，按UTC时间（如果你需要北京时间，就减8小时，比如'0 4 * * *'）
+    - cron: '0 13 * * *'  # 每天12点，按UTC时间（如果你需要北京时间，就减8小时，比如'0 4 * * *'）
   workflow_dispatch:  # 允许手动触发
 
 jobs:
