@@ -1,0 +1,16 @@
+import requests
+
+WEBHOOK_URL = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8d6cb27e-3626-4db7-b64e-a44ecffdb01d"
+
+def send_message():
+    data = {
+        "msgtype": "text",
+        "text": {
+            "content": "啥也别说了，开始干饭吧～🍚"
+        }
+    }
+    response = requests.post(WEBHOOK_URL, json=data)
+    print(response.text)
+
+if __name__ == "__main__":
+    send_message()
