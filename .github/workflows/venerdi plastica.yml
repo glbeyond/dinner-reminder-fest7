@@ -24,4 +24,4 @@ jobs:
 
     - name: Run venerdi plastica script
       run: |
-        python reminder.py
+        python venerdi plastica.py
