@@ -24,4 +24,4 @@ jobs:
 
     - name: Run venerdi plastica script
       run: |
-        python venerdi plastica.py
+        python venerdi_plastica.py
