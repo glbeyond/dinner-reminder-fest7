@@ -1,4 +1,4 @@
-name: Weekly Plastic Reminder
+name: venerdi plastica
 
 on:
   schedule:
@@ -22,6 +22,6 @@ jobs:
       run: |
         pip install requests
 
-    - name: Run plastic reminder script
+    - name: Run venerdi plastica script
       run: |
         python reminder.py
